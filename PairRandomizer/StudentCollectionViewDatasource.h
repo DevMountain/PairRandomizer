@@ -11,4 +11,6 @@
 
 @interface StudentCollectionViewDatasource : NSObject <UICollectionViewDataSource>
 
+- (void)registerCollectionView:(UICollectionView *)collectionView;
+
 @end

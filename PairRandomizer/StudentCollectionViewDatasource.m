@@ -7,16 +7,33 @@
 //
 
 #import "StudentCollectionViewDatasource.h"
+#import "StudentCollectionViewCell.h"
+
+@interface StudentCollectionViewDatasource ()
+
+@property (strong, nonatomic) UICollectionView *collectionView;
+
+@end
 
 @implementation StudentCollectionViewDatasource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (void)registerCollectionView:(UICollectionView *)collectionView {
     
+    self.collectionView = collectionView;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 18;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    StudentCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"studentCell" forIndexPath:indexPath];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.item];
+    
+    return cell;
 }
 
 - (NSMutableArray *) pairOfStudentsFromStudentOne
