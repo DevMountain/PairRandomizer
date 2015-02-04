@@ -12,10 +12,19 @@
 @interface StudentCollectionViewDatasource ()
 
 @property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray *students;
 
 @end
 
 @implementation StudentCollectionViewDatasource
+
+- (StudentCollectionViewDatasource *)init {
+    self = [super init];
+    if (self) {
+        [self randomStudentList];
+    }
+    return self;
+}
 
 - (void)registerCollectionView:(UICollectionView *)collectionView {
     
@@ -26,33 +35,38 @@
     return 18;
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     StudentCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"studentCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.item];
-    
+    [cell configureCellWithName:self.students[indexPath.item]];
+        
     return cell;
 }
 
-- (NSMutableArray *) pairOfStudentsFromStudentOne
+- (void)randomStudentList
 {
-    NSMutableArray *listOfStudents = [NSMutableArray arrayWithArray:@[@"Parker", @"Ethan", @"Jason", @"Paul", @"David", @"Christian", @"Gamma", @"Wagner", @"Ryan", @"Cal", @"Shawn", @"Ross", @"Gabe", @"Julien", @"Jake", @"Jordan", @"Trace"]];
+    NSMutableArray *array = [NSMutableArray arrayWithArray: @[@"Parker", @"Ethan", @"Jason", @"Paul", @"David", @"Christian", @"Gamma", @"Wagner", @"Ryan", @"Cal", @"Shawn", @"Ross", @"Gabe", @"Julien", @"Jake", @"Jordan", @"Trace", @"Mentor"]];
     
-    return listOfStudents;
+    self.students = [self shuffleArray:array];
 }
 
-- (NSMutableArray *) shuffleArray
+- (NSArray *)shuffleArray:(NSMutableArray *)array
 {
-    
-    for (int i=0; i < [[self pairOfStudentsFromStudentOne] count]; i++) {
-        
-        int rndValue = 1 + arc4random() % ([[self pairOfStudentsFromStudentOne] count] - 1);
-        [[self pairOfStudentsFromStudentOne] replaceObjectAtIndex:rndValue withObject: [[self pairOfStudentsFromStudentOne] objectAtIndex:rndValue]];
+    NSUInteger count = [array count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        NSInteger remainingCount = count - i;
+        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+        [array exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
     }
     
-    return [self pairOfStudentsFromStudentOne];
+    return array;
 }
+
+- (void)randomizeAndReload {
+    [self randomStudentList];
+    [self.collectionView reloadData];
+}
+
 
 @end

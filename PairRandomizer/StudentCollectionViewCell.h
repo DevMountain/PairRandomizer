@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
+- (void)configureCellWithName:(NSString *)name;
+
 @end

@@ -22,6 +22,10 @@ static NSString * const reuseIdentifier = @"studentCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Programming Pairs!";
+    
+    self.datasource = [StudentCollectionViewDatasource new];
+    
     [self.datasource registerCollectionView:self.collectionView];
     
 }
@@ -29,6 +33,10 @@ static NSString * const reuseIdentifier = @"studentCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)reload:(id)sender {
+    [self.datasource randomizeAndReload];
 }
 
 @end

@@ -10,4 +10,8 @@
 
 @implementation StudentCollectionViewCell
 
+- (void)configureCellWithName:(NSString *)name {
+    self.textLabel.text = name;
+}
+
 @end
