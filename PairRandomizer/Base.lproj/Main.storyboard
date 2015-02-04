@@ -182,13 +182,13 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="nTQ-JP-Wkt" id="iGR-Ub-FWs"/>
+                            <outlet property="dataSource" destination="k9a-uz-LKw" id="bFx-lg-8qo"/>
                             <outlet property="delegate" destination="nTQ-JP-Wkt" id="Tlb-gU-WG6"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugr-wq-C9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="k9a-uz-LKw"/>
+                <customObject id="k9a-uz-LKw" customClass="StudentCollectionViewDatasource"/>
             </objects>
             <point key="canvasLocation" x="309" y="367"/>
         </scene>
