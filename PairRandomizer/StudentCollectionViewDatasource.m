@@ -19,4 +19,23 @@
     
 }
 
+- (NSMutableArray *) pairOfStudentsFromStudentOne
+{
+    NSMutableArray *listOfStudents = [NSMutableArray arrayWithArray:@[@"Parker", @"Ethan", @"Jason", @"Paul", @"David", @"Christian", @"Gamma", @"Wagner", @"Ryan", @"Cal", @"Shawn", @"Ross", @"Gabe", @"Julien", @"Jake", @"Jordan", @"Trace"]];
+    
+    return listOfStudents;
+}
+
+- (NSMutableArray *) shuffleArray
+{
+    
+    for (int i=0; i < [[self pairOfStudentsFromStudentOne] count]; i++) {
+        
+        int rndValue = 1 + arc4random() % ([[self pairOfStudentsFromStudentOne] count] - 1);
+        [[self pairOfStudentsFromStudentOne] replaceObjectAtIndex:rndValue withObject: [[self pairOfStudentsFromStudentOne] objectAtIndex:rndValue]];
+    }
+    
+    return [self pairOfStudentsFromStudentOne];
+}
+
 @end
