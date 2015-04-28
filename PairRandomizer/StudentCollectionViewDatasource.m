@@ -46,7 +46,7 @@
 
 - (void)randomStudentList
 {
-    NSMutableArray *array = [NSMutableArray arrayWithArray: @[@"Cole", @"Daniel D", @"Daniel P", @"Doug", @"Gamaliel", @"Jon", @"Justin H", @"Justin O", @"Kim", @"Parker", @"Thomas", @"Savira", @"Warren", @"Andrew", @"Austin", @"Bradley", @"Cody", @"Egan", @"Mark", @"Michael", @"Peter", @"Sarah"]];
+    NSMutableArray *array = [NSMutableArray arrayWithArray: @[@"Cole", @"Daniel D", @"Daniel P", @"Doug", @"Gamaliel", @"Jon", @"Justin H", @"Justin O", @"Kim", @"Parker", @"Thomas", @"Savira", @"Warren", @"Andrew", @"Austin", @"Bradley", @"Egan", @"Mark", @"Michael", @"Peter", @"Sarah", @"Mentor"]];
     
     self.students = [self shuffleArray:array];
 }
